@@ -1,0 +1,27 @@
+{
+  "name": "test-your-luck-server",
+  "version": "1.0.0",
+  "description": "Welcome to the ultimate lottery experience! Join exciting contests. Buy tickets, earn coins by referring friends, and boost your chances to win. Watch live as winners are announced through thrilling slot machine spins. Play, invite, and win big – it’s your chance to shine!",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aslam",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cloudinary": "^2.5.1",
+    "cookie-parser": "^1.4.7",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.7.3",
+    "node-cron": "^3.0.3",
+    "nodemon": "^3.1.7",
+    "test_your_luck---copy": "file:.."
+  }
+}
