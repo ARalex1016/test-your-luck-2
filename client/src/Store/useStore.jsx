@@ -9,6 +9,7 @@ const useStore = create((set) => ({
   isCheckingAuth: false,
   isLoading: false,
   error: null,
+  currency: "$",
 
   signup: async (userData) => {
     set({ isLoading: true });
