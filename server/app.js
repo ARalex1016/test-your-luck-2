@@ -4,6 +4,7 @@ dotenv.config({ path: "./config.env" });
 import express from "express";
 import { v2 as cloudinary } from "cloudinary";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 import path from "path";
 
 // Route
@@ -16,6 +17,14 @@ const app = express();
 
 app.use(express.json({ limit: "10mb" }));
 app.use(cookieParser());
+if (process.env.NODE_ENV === "development") {
+  app.use(
+    cors({
+      origin: "http://localhost:5173",
+      credentials: true,
+    })
+  );
+}
 
 const __dirname = path.resolve();
 
@@ -30,11 +39,13 @@ app.use("/api/v1/user/", userRouter);
 app.use("/api/v1/contest/", contestRouter);
 app.use("/api/v1/ticket/", ticketRouter);
 
-app.use(express.static(path.join(__dirname, "../client/dist")));
+if (process.env.NODE_ENV === "development") {
+  app.use(express.static(path.join(__dirname, "../client/dist")));
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client", "dist", "index.html"));
-});
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../client", "dist", "index.html"));
+  });
+}
 
 export default app;
 export { cloudinary };
